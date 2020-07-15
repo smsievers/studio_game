@@ -1,18 +1,15 @@
 class Player
+    
+    attr_reader :health
+    attr_accessor :name
+
     def initialize(name, health=100)
         @name = name.capitalize
         @health = health
     end
 
-    attr_reader :health
-    attr_accessor :name
-
     def score
         @health + @name.length 
-    end
-
-    def say_hello
-        puts "Hi, I'm #{@name} with a health of #{@health}!"
     end
 
     def wOOt
@@ -31,11 +28,14 @@ class Player
 end
 
 class Game
+    
+    attr_reader :title
+
     def initialize(title)
         @title = title
         @players = []
-
-    attr_reader :title
+    
+    end
 
     def add_player(a_player)
         @players.push(a_player)
@@ -53,6 +53,7 @@ class Game
             player.blam
             puts player
         end
+    end
 end
 
 player1 = Player.new("Moe")
@@ -64,3 +65,10 @@ knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 knuckleheads.play
+
+blanabapants = Game.new("Blanabapants")
+blanabapants.add_player(player1)
+blanabapants.add_player(player2)
+player4 = Player.new("Snarf")
+blanabapants.add_player(player4)
+blanabapants.play
