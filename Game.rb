@@ -1,8 +1,10 @@
 require_relative 'Player'
+require_relative 'die'
+require_relative 'game_turn'
 
 class Game
     
-    attr_reader :title
+    attr_accessor :title
 
     def initialize(title)
         @title = title
@@ -20,10 +22,9 @@ class Game
         @players.each do |player|
             puts player
         end
+        
         @players.each do |player|
-            player.blam
-            player.wOOt
-            player.blam
+            GameTurn.take_turn(player)
             puts player
         end
     end

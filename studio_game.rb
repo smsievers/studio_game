@@ -1,5 +1,5 @@
-require relative 'Player'
-require relative 'Game'
+require_relative 'Player'
+require_relative 'Game'
 
 
 player1 = Player.new("Moe")
