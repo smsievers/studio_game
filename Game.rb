@@ -37,6 +37,16 @@ class Game
                 puts player
             end
         end
+
+        # 1.upto(rounds) do |round|
+        #     if block_given?
+        #         break if yield
+        #     end
+        #     knuckleheads.play(10) do
+        #         knuckleheads.total_points >= 2000
+        #     end
+        # end
+
     end
 
     def print_name_and_health(player)
@@ -57,6 +67,14 @@ class Game
         puts "\n#{wimpy_players.size} wimpy players:"
         wimpy_players.each do |player|
             print_name_and_health(player)
+        end
+        
+        @players.sort.each do |player|
+            puts "\n#{player.name}'s point totals:"
+            player.each_found_treasure do |treasure|
+                puts "#{treasure.points} total #{treasure.name} points"
+            end
+            puts "#{player.points} grand total points"
         end
         
         puts "\n#{@title} High Scores:"
