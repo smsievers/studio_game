@@ -17,6 +17,26 @@ class Game
         @players.push(a_player)
     end
 
+    def high_score_entry(player)
+        formatted_name = player.name ljust(20, '.')
+        file.puts "#{formatted_name}, #{player_score}"
+    end
+
+    def load_players(file)
+        File.readlines(file).each do |line|
+            add_player(Player.from_csv(line))
+        end
+    end
+
+    def save_high_scores(file)
+        File.open(to_file, "w") do |file|
+            file.puts "#{@title} High Scores:"
+            @players.sort.each do |player|
+                file.puts high_score_entry(player)
+            end
+        end
+    end
+
     def play(rounds)
         puts "There are #{@players.size} players in #{@title}."
         
@@ -79,8 +99,7 @@ class Game
         
         puts "\n#{@title} High Scores:"
             @players.sort.each do |player|
-            formatted_name = player.name.ljust(20, '.')
-            puts "#{formatted_name} #{player.score}"
+            puts high_score_entry(player)
         end
     end
 end
