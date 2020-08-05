@@ -1,9 +1,8 @@
 require_relative "treasure_trove"
-
+require_relative 'playable'
 class Player
-    
-    attr_reader :health
-    attr_accessor :name
+    include Playable
+    attr_accessor :name, :health
 
     def <=>(other)
         other.score <=> score
@@ -40,23 +39,11 @@ class Player
         @health + points
     end
 
-    def wOOt
-        @health += 15
-        puts "#{@name} got wOOted!"
-    end
-
-    def blam
-        @health -= 10
-        puts "#{@name} got blammed!"
-    end
-
     def to_s
         "I'm #{@name} with a health of #{@health}, points of #{points} and a score of #{score}."
     end
 
-    def strong?
-        @health > 100
-    end
+    
 end
 
 if __FILE__ ==$0

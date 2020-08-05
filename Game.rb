@@ -18,8 +18,8 @@ class Game
     end
 
     def high_score_entry(player)
-        formatted_name = player.name ljust(20, '.')
-        file.puts "#{formatted_name}, #{player_score}"
+        formatted_name = player.name.ljust(20, '.')
+        "#{formatted_name}, #{player.score}"
     end
 
     def load_players(file)
